@@ -1,5 +1,13 @@
 # Owl Contact Center Version 2
 
+## Files
+
+Heroku Hosting Service
+- [app.json](app.json) : Heroku deployment file to describe the application.
+- [composer.json](composer.json) : Heroku deployment file which sets the programming language used.
+
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/tigerfarm/owlcc)
+
 ## Setup Steps to Run on your Local Host.
 
 Download this project's zip file and unzip it into a work directory.

@@ -1,6 +1,7 @@
 {
-  "name": "Start on Heroku: PHP",
+  "name": "Owl Client, a Twilio Client",
   "description": "A basic TaskRouter PHP app.",
-  "repository": "https://github.com/heroku/php-getting-started",
-  "addons": []
+  "repository": "https://github.com/tigerfarm/OwlCc",
+  "logo": "http://tigerfarmpress.com/images/topImgLeft.jpg",
+  "keywords": ["php", "Twilio"]
 }

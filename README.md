@@ -16,10 +16,9 @@ Example:
 /Projects/OwlCc
 ```
 
-Download Twilio PHP helper library zip file.
-Unzip it into a work directories view subdirectory, which creates the library directory:
+Note, the Twilio PHP helper library is included in the subdirectory:
 ```
-/Projects/OwlCc/views/twilio-php-master
+/Projects/OwlCc/twilio-php-master
 ```
 
 In project directory, edit setvars.sh and add your values.
@@ -43,7 +42,7 @@ $ php -S localhost:8000
 Test that it works. In your browser, goto: http://localhost:8000.
 The Owl CC home pages is displayed.
 
-In another terminal window, run Ngrok to allow notifictions of incoming agent calls.
+In another terminal window, run Ngrok to allow notifications of incoming agent calls.
 ```
 $ /Users/dthurston/Applications/ngrok http 8000
 ...
@@ -53,3 +52,4 @@ Connect as an agent by going to the Ngrok URL, example:
 ```
 http://706bf85f.ngrok.io/agent_list
 ```
+

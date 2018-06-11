@@ -307,7 +307,7 @@ foreach ($activities as $record) {
                 <textarea id="log" readonly="true"></textarea>
             </section>
             <div style="padding-top:0.5em">
-                <a href="/agent_list">Back to Agent List</a>
+                <a href="/agent_list.php">Back to Agent List</a>
             </div>
         </div>
     </body>

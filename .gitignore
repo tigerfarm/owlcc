@@ -1,0 +1,4 @@
+# Ignore my specific variables:
+0setvars.sh
+#
+twilio-php-master/

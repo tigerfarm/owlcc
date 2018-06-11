@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Owl CC</title>
+        <link href="faviconftp.ico" rel="shortcut icon" type="image/x-icon">
+        <style>
+            .company {
+                padding-top: 6%;
+                padding-left: 200px;
+            }
+            .company > h1 {
+                margin: 0;
+                text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+                font-size: 5em;
+            }
+            .company > h2 {
+                text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+            }
+            .network-name {
+                text-transform: uppercase;
+                font-size: 14px;
+                font-weight: 400;
+                letter-spacing: 2px;
+            }
+            .btn {
+                background: #3498db;
+                background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+                background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+                background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+                background-image: -o-linear-gradient(top, #3498db, #2980b9);
+                background-image: linear-gradient(to bottom, #3498db, #2980b9);
+                -webkit-border-radius: 28;
+                -moz-border-radius: 28;
+                border-radius: 28px;
+                font-family: Arial;
+                color: #ffffff;
+                font-size: 20px;
+                padding: 10px 20px 10px 20px;
+                text-decoration: none;
+            }
+            .btn:hover {
+                background: #3cb0fd;
+                background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+                background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+                background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+                background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+                background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="company">
+            <h1>Owl Call Center</h1>
+            <h2>TaskRouter Call Center with single caller queue</h2>
+
+            <a href="/agent_list" class="btn"><span class="network-name">Agent list</span></a>
+
+            <hr style="margin-top: 30px;"/>
+            <h3>Call Center Functionality:</h3>
+            <ol>
+                <li>A Twilio phone number is configured with an IVR.</li>
+                <li>The IVR receives incoming callers, says a message, and put the caller into a TaskRouter managed voice queue.</li>
+                <li>The voice queue holds incoming callers while they listen to music.</li>
+                <li>There is a single TaskRouter Workspace:
+                    <ol>
+                        <li>One Workflow</li>
+                        <li>One TaskQueue</li>
+                        <li>Worker agents</li>
+                        <li>Agent Client call Activities (example, offline, idle, and busy).</li>
+                    </ol>
+                </li>
+                <li>There is this Agent application:
+                    <ol>
+                        <li>agents to set their status activity to idle, so that they can receive calls from callers in the queue (TaskQueue).</li>
+                        <li>This application can either be deployed to Heroku or run on a localhost computer.</li>
+                        <li>The application is a simplified version of the Twilio Call Center course application.</li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+</html>

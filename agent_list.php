@@ -33,7 +33,7 @@ foreach ($activities as $record) {
             <h2>TaskRouter Workers</h2>
             <?php
             foreach ($voice_workers as $voice_worker) {
-                echo "<a href=\"agents?WorkerSid=" . $voice_worker->sid . "\">" . $voice_worker->friendlyName . "</a> - " . $voice_worker->activityName . "<br />";
+                echo "<a href=\"agent_desktop.php?WorkerSid=" . $voice_worker->sid . "\">" . $voice_worker->friendlyName . "</a> - " . $voice_worker->activityName . "<br />";
             }
             ?>
         </div>

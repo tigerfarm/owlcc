@@ -35,7 +35,7 @@ foreach ($activities as $record) {
         <script type="text/javascript" src="//media.twiliocdn.com/taskrouter/js/v1.10/taskrouter.min.js"></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <link type="text/css" rel="stylesheet" href="//media.twiliocdn.com/taskrouter/quickstart/agent.css"/>
-        <link href="views/agent_desktop.css" rel="stylesheet"/>
+        <link href="agent_desktop.css" rel="stylesheet"/>
         <style>
             .btn {
                 background: #3498db;

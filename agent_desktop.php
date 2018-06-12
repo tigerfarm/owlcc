@@ -1,9 +1,11 @@
 <?php
 // Load Twilio PHP Helper Library.
 require __DIR__ . '/twilio-php-master/Twilio/autoload.php';
+
 use Twilio\Rest\Client;
 use Twilio\Jwt\TaskRouter\WorkerCapability;
 use Twilio\Jwt\ClientToken;
+
 // -------------------------------------------------------
 $account_sid = getenv("ACCOUNT_SID");
 $auth_token = getenv('AUTH_TOKEN');
@@ -36,6 +38,8 @@ foreach ($activities as $record) {
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <link type="text/css" rel="stylesheet" href="//media.twiliocdn.com/taskrouter/quickstart/agent.css"/>
         <link href="agent_desktop.css" rel="stylesheet"/>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">    
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <style>
             .btn {
                 background: #3498db;
@@ -224,7 +228,7 @@ foreach ($activities as $record) {
                     document.getElementById("worker_status").style.color = "#00BB00";
                 } else {
                     document.getElementById("worker_status").style.color = "#BB0000";
-                }
+            }
             }
             // -----------------------------------------------------------------
             function registerTaskRouterCallbacks() {

@@ -23,6 +23,16 @@ Heroku Hosting Service configurations
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/tigerfarm/owlcc)
 
+When you deploy to Heroku, you will be prompted for an app name. The name needs to be unique,
+example, enter your name+cc (example: davidcc). Click Deploy app. Once the application is deployed, click Manage app.
+Set Heroku project environment variables by clicking Settings.
+Click Reveal Config Vars. Add the following key value pairs:
+```
+ACCOUNT_SID=your_account_SID
+AUTH_TOKEN=your_account_auth_token
+WORKSPACE_SID=your_TaskRouter_workspace_SID
+```
+
 ## Setup Steps to Run on your Local Host.
 
 Download this repository's zip file and unzip it into a work directory.
@@ -37,7 +47,6 @@ Note, the Twilio PHP helper library is included in the subdirectory:
 ```
 
 In the project directory, edit setvars.sh and add your values.
-
 ```
 ACCOUNT_SID=your_account_SID
 AUTH_TOKEN=your_account_auth_token

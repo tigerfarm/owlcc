@@ -26,6 +26,8 @@ foreach ($activities as $record) {
     <head>
         <meta charset="UTF-8">
         <title>Title</title>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">    
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link type="text/css"  rel="stylesheet" href="//media.twiliocdn.com/taskrouter/quickstart/agent.css"/>
     </head>
     <body>

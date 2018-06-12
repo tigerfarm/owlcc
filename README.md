@@ -2,18 +2,18 @@
 
 ## Files
 
-Agent desktop website
+Agent desktop website:
 - [index.html](index.html) : Home page
-- [agent_list.php](agent_list.php) : List TaskRouter worker agents and their status
+- [agent_list.php](agent_list.php) : List TaskRouter worker agents and their status. An agent will click their name to display their desktop.
 - [agent_desktop.css](agent_desktop.css) : Agent desktop to set their status and monitor their call messages.
 - favicon.ico
 
-Twilio PHP Helper Library directory:
-- twilio-php-master
+[Twilio PHP Helper Library](https://www.twilio.com/docs/libraries/php) directory:
+- twilio-php-master : Downloaded and unzipped into this directory. This is the version without Composer.
 
 For a localhost setup, creating environment variables and testing the setup:
-- [setvars.sh](setvars.sh) : 
-- [echoVars.php](echoVars.php) : 
+- [setvars.sh](setvars.sh) : Set the environment variables.
+- [echoVars.php](echoVars.php) : Echo the environment variables. Test the Twilio Helper Library installation and the TaskRouter configurations.
 
 README.md : this file
 

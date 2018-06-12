@@ -7,5 +7,5 @@ export ACCOUNT_SID
 export AUTH_TOKEN
 export WORKSPACE_SID
 echo "+ Variables set."
-php views/echoVars.php
+php echoVars.php
 # ------------------------------------------------------------------------------

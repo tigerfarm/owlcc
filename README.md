@@ -2,7 +2,22 @@
 
 ## Files
 
-Heroku Hosting Service
+Agent desktop website
+- [index.html](index.html) : Home page
+- [agent_list.php](agent_list.php) : List TaskRouter worker agents and their status
+- [agent_desktop.css](agent_desktop.css) : Agent desktop to set their status and monitor their call messages.
+- favicon.ico
+
+Twilio PHP Helper Library directory:
+- twilio-php-master
+
+For a localhost setup, creating environment variables and testing the setup:
+- [setvars.sh](setvars.sh) : 
+- [echoVars.php](echoVars.php) : 
+
+README.md : this file
+
+Heroku Hosting Service configurations
 - [app.json](app.json) : Heroku deployment file to describe the application.
 - [composer.json](composer.json) : Heroku deployment file which sets the programming language used.
 
@@ -10,8 +25,8 @@ Heroku Hosting Service
 
 ## Setup Steps to Run on your Local Host.
 
-Download this project's zip file and unzip it into a work directory.
-Example:
+Download this repository's zip file and unzip it into a work directory.
+Example work directory:
 ```
 /Projects/OwlCc
 ```
@@ -21,7 +36,7 @@ Note, the Twilio PHP helper library is included in the subdirectory:
 /Projects/OwlCc/twilio-php-master
 ```
 
-In project directory, edit setvars.sh and add your values.
+In the project directory, edit setvars.sh and add your values.
 
 ```
 ACCOUNT_SID=your_account_SID
@@ -32,6 +47,25 @@ WORKSPACE_SID=your_TaskRouter_workspace_SID
 Set your terminal session's environment variables.
 ```
 $ source ./setvars.sh
++++ Set variables.
++ Variables set.
+---------------------------------------
++++ Echo environment variables and test the environment.
++ ACCOUNT_SID   : your_account_SID
++ AUTH_TOKEN    : your_account_auth_token
++ Test the loading and using of the Twilio PHP helper library.
++ Twilio PHP Helper Library Client is working.
+---------------------------------------
++ Worker SID for testing the generation of tokens: your_TaskRouter_worker_SID
++ Worker Client token created.
++ WORKSPACE_SID : your_TaskRouter_workspace_SID
++ Worker token created.
+--------------------------------------- 
+```
+
+Also, in echoVars.php, workerSid to one of your TaskRouter workers.
+```
+$workerSid = "WK10ec1823ae8a54d715ba424599ea473f";
 ```
 
 Run the PHP HTTP server using port 8000.

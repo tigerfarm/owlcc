@@ -6,8 +6,28 @@
 #bottomBar {
     width: 780px;
     margin: 6px 0px 0px 120px;
-    padding: 6px 0px 0px 0px;
+    padding: 6px 0px 20px 0px;
+    font: Helvetica,Arial,sans-serif;
+    font-size: 14px; 
+    text-align: center;
+    color: rgba(255,255,255,.65); 
+    background-color: #565b73;
 }
+#agentList {
+    padding: 0px 0px 20px 0px;
+    text-decoration: none;
+}
+#bottomContent {
+    padding-top: 20px;
+    text-decoration: none;
+}
+a:link, a:visited {
+    text-decoration: none;
+}
+a:hover, a:active {
+    text-decoration: underline;
+}
+
 h1 {
     margin: 0;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);

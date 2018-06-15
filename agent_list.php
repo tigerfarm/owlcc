@@ -1,7 +1,9 @@
 <?php
 // Load Twilio PHP Helper Library.
 require __DIR__ . '/twilio-php-master/Twilio/autoload.php';
+
 use Twilio\Rest\Client;
+
 $account_sid = getenv("ACCOUNT_SID");
 $auth_token = getenv('AUTH_TOKEN');
 $client = new Client($account_sid, $auth_token);
@@ -35,11 +37,13 @@ foreach ($activities as $record) {
         <div class="company">
             <h2>Agent List</h2>
             <p>Click your TaskRouter Worker ID.</p>
-            <?php
-            foreach ($voice_workers as $voice_worker) {
-                echo "<a href=\"agent_desktop.php?WorkerSid=" . $voice_worker->sid . "\">" . $voice_worker->friendlyName . "</a> - " . $voice_worker->activityName . "<br />";
-            }
-            ?>
+            <div id="agentList">
+                <?php
+                foreach ($voice_workers as $voice_worker) {
+                    echo "<a href=\"agent_desktop.php?WorkerSid=" . $voice_worker->sid . "\" style=\"color: black;\"" . ">" . $voice_worker->friendlyName . "</a> - " . $voice_worker->activityName . "<br />";
+                }
+                ?>
+            </div>
         </div>
         <script type="text/javascript" src="../pageBottom.js"></script>
     </body>

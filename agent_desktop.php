@@ -265,18 +265,10 @@ foreach ($activities as $record) {
         </script>
     </head>
     <body>
-        <div id="topBar">
-            <table><tr>
-                    <td><img src="TwilioLogo.jpg" alt="Twilio" style="width:120px; padding-right: 30px;"/></td>
-                    <td><h1>Owl Call Center</h1></td>
-                </tr></table>
-            <hr>
-        </div>
+        <script type="text/javascript" src="../pageTop.js"></script>
         <div class="company">
         <!-- div class="content" -->
             <h2>Owl Contact Center Agent Desktop</h2>
-            
-            
             <table><tr>
                     <td><section id="worker_name"></section></td>
                     <td><section id="worker_status"></section></td>

@@ -31,15 +31,10 @@ foreach ($activities as $record) {
         <link href="agentapp.css" rel="stylesheet"/>
     </head>
     <body>
-        <div id="topBar">
-            <table><tr>
-                    <td><img src="TwilioLogo.jpg" alt="Twilio" style="width:120px; padding-right: 30px;"/></td>
-                    <td><h1>Owl Call Center</h1></td>
-                </tr></table>
-            <hr>
-        </div>
+        <script type="text/javascript" src="../pageTop.js"></script>
         <div class="company">
-            <h2>TaskRouter Workers</h2>
+            <h2>Agent List</h2>
+            <p>Click your TaskRouter Worker ID.</p>
             <?php
             foreach ($voice_workers as $voice_worker) {
                 echo "<a href=\"agent_desktop.php?WorkerSid=" . $voice_worker->sid . "\">" . $voice_worker->friendlyName . "</a> - " . $voice_worker->activityName . "<br />";

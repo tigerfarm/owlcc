@@ -7,38 +7,35 @@
         <link href="agentapp.css" rel="stylesheet"/>
     </head>
     <body>
-        <div id="topBar">
-            <table><tr>
-                    <td><img src="TwilioLogo.jpg" alt="Twilio" style="width:120px; padding-right: 30px;"/></td>
-                    <td><h1>Owl Call Center</h1></td>
-                </tr></table>
-            <hr>
-        </div>
+        <script type="text/javascript" src="../pageTop.js"></script>
         <div class="company">
             <h2>Agent Application</h2>
             <a href="/agent_list.php" class="btn"><span class="network-name">Agent list</span></a>
             <h3 style="padding-top: 30px;">Call Center Flow</h3>
             <img src="CallCenterFlow.jpg" alt="Call Center Flow" style="border: solid 3px;"/>
-            <!-- ol>
+            <br/>
+            <h2>Specifications</h2>
+            <ol>
                 <li>A Twilio phone number is configured with an IVR.</li>
-                <li>The IVR receives incoming callers, says a message, and put the caller into a TaskRouter managed voice queue.</li>
-                <li>The voice queue holds incoming callers while they listen to music.</li>
+                <li>The IVR receives incoming callers, says a message, and adds the caller into a TaskRouter managed TaskQueue.
+                    <br/>While in the queue, callers listen to music.</li>
                 <li>There is a single TaskRouter Workspace:
                     <ol>
-                        <li>One Workflow</li>
                         <li>One TaskQueue</li>
+                        <li>One Workflow</li>
                         <li>Worker agents</li>
-                        <li>Agent Client call Activities (example, offline, idle, and busy).</li>
+                        <li>Agent Client call Activities, for example: offline, idle (available), and busy.</li>
                     </ol>
                 </li>
-                <li>There is this Agent application:
+                <li>Agents connect to the Agent Application with their web browser and set their status activity to idle,
+                    which means they are available to receive calls
+                    <br/>About the application:
                     <ol>
-                        <li>agents to set their status activity to idle, so that they can receive calls from callers in the queue (TaskQueue).</li>
-                        <li>This application can either be deployed to Heroku or run on a localhost computer.</li>
-                        <li>The application is a simplified version of the Twilio Call Center course application.</li>
+                        <li>It can either be deployed to Heroku, run on a localhost computer, or any other computer which as PHP enabled.</li>
+                        <li>The application is a simplified version of the Twilio Call Center training course application.</li>
                     </ol>
                 </li>
-            </ol-->
+            </ol>
         </div>
         <div id="bottomBar">
             <hr>

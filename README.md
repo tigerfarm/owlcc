@@ -24,8 +24,8 @@ Agent desktop website:
 For website branding:
 - [companyLogo.jpg](companyLogo.jpg)
 - [pageTop.js](pageTop.js) : Top of the page for branding: logo and application title
-- favicon.ico
 - [agentapp.css](agentapp.css) : HTML styles
+- [favicon.ico](favicon.ico)
 
 [Twilio PHP Helper Library](https://www.twilio.com/docs/libraries/php) directory:
 - twilio-php-master : Downloaded and unzipped into this directory. This is the version without Composer.

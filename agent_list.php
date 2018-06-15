@@ -43,7 +43,6 @@ foreach ($activities as $record) {
         </div>
         <div id="bottomBar">
             <hr>
-            <a href="/">Back to Home Page</a>
         </div>
     </body>
 </html>

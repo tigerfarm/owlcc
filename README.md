@@ -103,3 +103,10 @@ Connect as an agent by going to the Ngrok URL, example:
 http://706bf85f.ngrok.io/agent_list
 ```
 
+## Updates to make
+
+- A standard page bottom.
+- Desktop: Put status to offline when clicking "Return."
+- Desktop: Hangup caller when clicking Hangup.
+- Desktop: Set TTL for the token.
+- Home page: Add Support and Training links. Or add an About page.

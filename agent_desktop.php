@@ -288,10 +288,10 @@ foreach ($activities as $record) {
             <section>
                 <textarea id="log" readonly="true" style="width: 600px;height: 200px"></textarea>
             </section>
+            <a href="/agent_list.php">Back to Agent List</a>
         </div>
         <div id="bottomBar">
             <hr>
-            <a href="/agent_list.php">Back to Agent List</a>
         </div>
     </body>
 </html>

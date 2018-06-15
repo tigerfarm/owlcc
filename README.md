@@ -18,9 +18,14 @@ WORKSPACE_SID=your_TaskRouter_workspace_SID
 
 Agent desktop website:
 - [index.html](index.html) : Home page
-- [agent_list.php](agent_list.php) : List TaskRouter worker agents and their status. An agent will click their name to display their desktop.
-- [agent_desktop.css](agent_desktop.css) : Agent desktop to set their status and monitor their call messages.
+- [agent_list.php](agent_list.php) : List TaskRouter worker agents and their status.
+- [agent_desktop.css](agent_desktop.css) : Agent desktop to manage their status and receive calls.
+
+For website branding:
+- [companyLogo.jpg](companyLogo.jpg)
+- [pageTop.js](pageTop.js) : Top of the page for branding: logo and application title
 - favicon.ico
+- [agentapp.css](agentapp.css) : HTML styles
 
 [Twilio PHP Helper Library](https://www.twilio.com/docs/libraries/php) directory:
 - twilio-php-master : Downloaded and unzipped into this directory. This is the version without Composer.

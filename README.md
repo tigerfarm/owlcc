@@ -1,5 +1,7 @@
 # Owl Contact Center Version 2
 
+<img src="CallCenterFlow.jpg"/>
+
 ## Files
 
 Agent desktop website:

@@ -38,7 +38,7 @@ For a localhost setup, creating environment variables and testing the setup:
 README.md : this file
 
 Heroku Hosting Service configurations
-- [app.json](app.json) : Heroku deployment file to describe the application.
+- [app.json](app.json) : Heroku deployment file to describe the application when it is being deployed.
 - [composer.json](composer.json) : Heroku deployment file which sets the programming language used.
 
 ## Setup Steps to Run on your Local Host.
@@ -107,7 +107,6 @@ http://706bf85f.ngrok.io/agent_list
 ## Updates to make
 
 - Content for the standard page bottom.
-- Home page: Add Support and Training links. Or add an About page.
-- Desktop: Put status to offline when clicking "Return."
 - Desktop: Hangup caller when clicking Hangup.
 - Desktop: Set TTL for the token.
+- Desktop: Put status to offline when clicking "Return."

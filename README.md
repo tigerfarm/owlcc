@@ -23,7 +23,8 @@ Agent desktop website:
 
 For website branding:
 - [companyLogo.jpg](companyLogo.jpg)
-- [pageTop.js](pageTop.js) : Top of the page for branding: logo and application title
+- [pageTop.js](pageTop.js) : Top of the page for logo and application title
+- [pageBottom.js](pageBottom.js) : Bottom of the page
 - [agentapp.css](agentapp.css) : HTML styles
 - [favicon.ico](favicon.ico)
 

@@ -41,8 +41,6 @@ foreach ($activities as $record) {
             }
             ?>
         </div>
-        <div id="bottomBar">
-            <hr>
-        </div>
+        <script type="text/javascript" src="../pageBottom.js"></script>
     </body>
 </html>

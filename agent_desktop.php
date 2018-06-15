@@ -268,7 +268,7 @@ foreach ($activities as $record) {
         <script type="text/javascript" src="../pageTop.js"></script>
         <div class="company">
         <!-- div class="content" -->
-            <h2>Owl Contact Center Agent Desktop</h2>
+            <h2>Agent Desktop</h2>
             <table><tr>
                     <td><section id="worker_name"></section></td>
                     <td><section id="worker_status"></section></td>
@@ -290,8 +290,6 @@ foreach ($activities as $record) {
             </section>
             <a href="/agent_list.php">Back to Agent List</a>
         </div>
-        <div id="bottomBar">
-            <hr>
-        </div>
+        <script type="text/javascript" src="../pageBottom.js"></script>
     </body>
 </html>

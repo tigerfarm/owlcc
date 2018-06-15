@@ -28,10 +28,17 @@ foreach ($activities as $record) {
         <title>Title</title>
         <link rel="icon" href="/favicon.ico" type="image/x-icon">    
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-        <link type="text/css"  rel="stylesheet" href="//media.twiliocdn.com/taskrouter/quickstart/agent.css"/>
+        <link href="agentapp.css" rel="stylesheet"/>
     </head>
     <body>
-        <div id="workers">
+        <div id="topBar">
+            <table><tr>
+                    <td><img src="TwilioLogo.jpg" alt="Twilio" style="width:120px; padding-right: 30px;"/></td>
+                    <td><h1>Owl Call Center</h1></td>
+                </tr></table>
+            <hr>
+        </div>
+        <div class="company">
             <h2>TaskRouter Workers</h2>
             <?php
             foreach ($voice_workers as $voice_worker) {
@@ -39,7 +46,8 @@ foreach ($activities as $record) {
             }
             ?>
         </div>
-        <div style="padding-top:1.5em">
+        <div id="bottomBar">
+            <hr>
             <a href="/">Back to Home Page</a>
         </div>
     </body>

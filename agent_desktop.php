@@ -33,40 +33,12 @@ foreach ($activities as $record) {
 <html>
     <head>
         <title>Owl Agents</title>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">    
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <script type="text/javascript" src="//media.twiliocdn.com/sdk/js/client/v1.4/twilio.min.js"></script>
         <script type="text/javascript" src="//media.twiliocdn.com/taskrouter/js/v1.10/taskrouter.min.js"></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <link type="text/css" rel="stylesheet" href="//media.twiliocdn.com/taskrouter/quickstart/agent.css"/>
-        <link href="agent_desktop.css" rel="stylesheet"/>
-        <link rel="icon" href="/favicon.ico" type="image/x-icon">    
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-        <style>
-            .btn {
-                background: #3498db;
-                background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-                background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-                background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-                background-image: -o-linear-gradient(top, #3498db, #2980b9);
-                background-image: linear-gradient(to bottom, #3498db, #2980b9);
-                -webkit-border-radius: 28;
-                -moz-border-radius: 28;
-                border-radius: 28px;
-                font-family: Arial;
-                color: #ffffff;
-                font-size: 20px;
-                padding: 10px 20px 10px 20px;
-                text-decoration: none;
-            }
-            .btn:hover {
-                background: #3cb0fd;
-                background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-                background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-                background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-                background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-                background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-                text-decoration: none;
-            }
-        </style>
+        <link href="agentapp.css" rel="stylesheet"/>
         <script type="text/javascript">
             Twilio.Device.setup("<?= $client_token ?>", {debug: true});
             Twilio.Device.ready(function (device) {
@@ -223,7 +195,7 @@ foreach ($activities as $record) {
                     document.getElementById("btn_" + button).style.display = (buttons[button] ? "inline" : "none");
                 });
                 let available = worker.available;
-                document.getElementById("worker_status").innerText = activityName;
+                document.getElementById("worker_status").innerText = "Status: " + activityName;
                 if (available === true) {
                     document.getElementById("worker_status").style.color = "#00BB00";
                 } else {
@@ -234,7 +206,8 @@ foreach ($activities as $record) {
             function registerTaskRouterCallbacks() {
                 worker.on('ready', function (worker) {
                     logger("Successfully registered as: " + worker.friendlyName);
-                    document.querySelector('h2').innerHTML = "ACME agent desktop: " + worker.friendlyName;
+                    // document.querySelector('h2').innerHTML = "Call center agent desktop for: " + worker.friendlyName;
+                    document.getElementById('worker_name').innerText = "Agent: " + worker.friendlyName + " >>> ";
                     if (worker.attributes.skills) {
                         logger("Skills: " + worker.attributes.skills.join(', '));
                     }
@@ -292,27 +265,41 @@ foreach ($activities as $record) {
         </script>
     </head>
     <body>
-        <div class="content">
+        <div id="topBar">
+            <table><tr>
+                    <td><img src="TwilioLogo.jpg" alt="Twilio" style="width:120px; padding-right: 30px;"/></td>
+                    <td><h1>Owl Call Center</h1></td>
+                </tr></table>
+            <hr>
+        </div>
+        <div class="company">
+        <!-- div class="content" -->
             <h2>Owl Contact Center Agent Desktop</h2>
-            <section id="worker_status"></section>
+            
+            
+            <table><tr>
+                    <td><section id="worker_name"></section></td>
+                    <td><section id="worker_status"></section></td>
+            </tr></table>
             <section>
                 <br/>
-                <button id="btn_accept" style="display:none;" class="btn" onclick="acceptReservation()">Accept</button>
-                <button id="btn_reject" style="display:none;" class="btn" onclick="rejectReservation()">Reject</button>
-                <button id="btn_mute" style="display:none;" class="btn" onclick="muteCaller()">Mute</button>
-                <button id="btn_unmute" style="display:none;" class="btn" onclick="unmuteCaller()">Unmute</button>
-                <button id="btn_hangup" style="display:none;" class="btn" onclick="hangup();">Hangup</button>
-                <button id="btn_online" style="display:none;" class="btn" onclick="goAvailable()">Go Available</button>
-                <button id="btn_offline" style="display:none;" class="btn" onclick="goOffline()">Go Offline</button>
+                <a class="btn" id="btn_online" style="display:none;"><span class="network-name" onclick="goAvailable()">Go Available</span></a>
+                <a class="btn" id="btn_offline" style="display:none;"><span class="network-name" onclick="goOffline()">Go Offline</span></a>
+                <a class="btn" id="btn_accept" style="display:none;"><span class="network-name" onclick="acceptReservation()">Accept</span></a>
+                <a class="btn" id="btn_reject" style="display:none;"><span class="network-name" onclick="rejectReservation()">Reject</span></a>
+                <a class="btn" id="btn_mute" style="display:none;"><span class="network-name" onclick="muteCaller()">Mute</span></a>
+                <a class="btn" id="btn_unmute" style="display:none;"><span class="network-name" onclick="unmuteCaller()">Unmute</span></a>
+                <a class="btn" id="btn_hangup" style="display:none;"><span class="network-name" onclick="hangup()">Hangup</span></a>
             </section>
             <section class="log"></section>
             <br/>
             <section>
-                <textarea id="log" readonly="true"></textarea>
+                <textarea id="log" readonly="true" style="width: 600px;height: 200px"></textarea>
             </section>
-            <div style="padding-top:0.5em">
-                <a href="/agent_list.php">Back to Agent List</a>
-            </div>
+        </div>
+        <div id="bottomBar">
+            <hr>
+            <a href="/agent_list.php">Back to Agent List</a>
         </div>
     </body>
 </html>

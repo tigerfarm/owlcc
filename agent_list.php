@@ -38,11 +38,13 @@ foreach ($activities as $record) {
             <h2>Agent List</h2>
             <p>Click your TaskRouter Worker ID.</p>
             <div id="agentList">
-                <?php
-                foreach ($voice_workers as $voice_worker) {
-                    echo "<a href=\"agent_desktop.php?WorkerSid=" . $voice_worker->sid . "\" style=\"color: black;\"" . ">" . $voice_worker->friendlyName . "</a> - " . $voice_worker->activityName . "<br />";
-                }
-                ?>
+                <table>
+                    <?php
+                    foreach ($voice_workers as $voice_worker) {
+                        echo "<tr><td><a href=\"agent_desktop.php?WorkerSid=" . $voice_worker->sid . "\" style=\"color: #565b73;padding-right: 10px;\"" . ">" . $voice_worker->friendlyName . "</a> </td><td>" . $voice_worker->activityName . "</td></tr>";
+                    }
+                    ?>
+                </table>
             </div>
         </div>
         <script type="text/javascript" src="../pageBottom.js"></script>

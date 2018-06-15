@@ -14,14 +14,14 @@ $client = new Client($account_sid, $auth_token);
 $workerSid = $_REQUEST['WorkerSid'];
 $client_capability = new ClientToken($account_sid, $auth_token);
 $client_capability->allowClientIncoming($workerSid);
-$client_token = $client_capability->generateToken();
+$client_token = $client_capability->generateToken(28800); // Expire: 60 * 60 * 8
 // -------------------------------------------------------
 $workspace_sid = getenv("WORKSPACE_SID");
 $capability = new WorkerCapability($account_sid, $auth_token, $workspace_sid, $workerSid);
 $capability->allowFetchSubresources();
 $capability->allowActivityUpdates();
 $capability->allowReservationUpdates();
-$workerToken = $capability->generateToken(28800);  // 60 * 60 * 8
+$workerToken = $capability->generateToken(28800);  // Expire: 60 * 60 * 8
 // -------------------------------------------------------
 $activities = $client->taskrouter->v1->workspaces($workspace_sid)->activities->read();
 $activity = [];

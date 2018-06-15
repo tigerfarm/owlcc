@@ -25,7 +25,7 @@ For website branding:
 - [companyLogo.jpg](companyLogo.jpg)
 - [pageTop.js](pageTop.js) : Top of the page for logo and application title
 - [pageBottom.js](pageBottom.js) : Bottom of the page
-- [agentapp.css](agentapp.css) : HTML styles
+- [agentapp.css](agentapp.css) : HTML page styles
 - [favicon.ico](favicon.ico)
 
 [Twilio PHP Helper Library](https://www.twilio.com/docs/libraries/php) directory:
@@ -106,8 +106,8 @@ http://706bf85f.ngrok.io/agent_list
 
 ## Updates to make
 
-- A standard page bottom.
+- Content for the standard page bottom.
+- Home page: Add Support and Training links. Or add an About page.
 - Desktop: Put status to offline when clicking "Return."
 - Desktop: Hangup caller when clicking Hangup.
 - Desktop: Set TTL for the token.
-- Home page: Add Support and Training links. Or add an About page.

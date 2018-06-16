@@ -106,7 +106,8 @@ http://706bf85f.ngrok.io/agent_list
 
 ## Updates to make
 
-- Content for the standard page bottom.
+- Agent List: enter a password to pass to the Desktop to authorize token generation.
+-- Access password is an environment variable.
 - Desktop: Hangup caller when clicking Hangup.
 - Desktop: Set TTL for the token.
 - Desktop: Put status to offline when clicking "Return."

@@ -41,7 +41,12 @@ foreach ($activities as $record) {
                 <table>
                     <?php
                     foreach ($voice_workers as $voice_worker) {
-                        echo "<tr><td><a href=\"agent_desktop.php?WorkerSid=" . $voice_worker->sid . "\" style=\"color: #565b73;padding-right: 10px;\"" . ">" . $voice_worker->friendlyName . "</a> </td><td>" . $voice_worker->activityName . "</td></tr>";
+                        echo "<tr><td>"
+                        . "<a href=\"agent_desktop.php?WorkerSid=" . $voice_worker->sid . "\" style=\"color: #080A30;padding-right: 10px;\"" . ">"
+                        . $voice_worker->friendlyName . "</a>"
+                        . "</td><td>"
+                        . $voice_worker->activityName
+                        . "</td></tr>";
                     }
                     ?>
                 </table>

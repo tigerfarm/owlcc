@@ -106,9 +106,30 @@ http://706bf85f.ngrok.io/agent_list
 
 ## Updates to make
 
-- Test mute and unmute.
-- Desktop: Hangup caller when clicking Hangup, i.e. end the conference call, not just end the agent's connection to the conference call.
 - Desktop: Put agent status to offline when clicking "Return."
 - Desktop: Set TTL for the token using an environment variable.
 - Agent List: enter a password to pass to the Desktop to authorize token generation.
 -- Access password is an environment variable.
+
+Set agent to not use Agent app Client.
+- Agent Accepts a call, Assignment Status: assigned.
+- Agent hangs up up on outside Client, Assignment Status: assigned.
+- Caller hangs up, Assignment Status: wrapping, and Agent status goes to WrapUp (PostWorkActivitySid).
+-- Now the Task Assignment Status doesn't change, and I need to delete the task from the Console.
+- Agent Accepts a call, Assignment Status: assigned.
+- Caller hangs up, Assignment Status: assigned.
+- Agent hangs up up on outside Client, Assignment Status: wrapping, and Agent status goes to WrapUp (PostWorkActivitySid).
+> ---------
+> Worker activity updated to: WrapUp
+-- Now the Task Assignment Status doesn't change, and I need to delete the task from the Console.
+
+- Agent Accepts a call, Assignment Status: assigned.
+- Agent Hangs up in the Agent App, Assignment Status: completed.
+> ---------
+> hangup(), set ReservationObject.task.complete().
+> Set Worker activity to: WrapUp.
+> ---------
+> Worker activity updated to: WrapUp
+> Worker: Stacy, has ended the call.
+> Device: disconnect.
+> ---------

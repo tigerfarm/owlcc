@@ -8,9 +8,7 @@ const client = require('twilio')(accountSid, authToken);
 const workspaceSid = process.env.WORKSPACE_SID;
 var arrayActivities = [];
 client.taskrouter.v1
-        .workspaces(workspaceSid)
-        .activities
-        .list()
+        .workspaces(workspaceSid).activities.list()
         .then((activities) => {
             console.log("++ Load workspace activies.");
             activities.forEach((activity) => {
@@ -21,9 +19,7 @@ client.taskrouter.v1
         });
 function workerList() {
     client.taskrouter.v1
-            .workspaces(workspaceSid)
-            .workers
-            .list()
+            .workspaces(workspaceSid).workers.list()
             .then((workers) => {
                 console.log("++ List worker activity status.");
                 workers.forEach((worker) => {
@@ -33,9 +29,7 @@ function workerList() {
 }
 function workerInfo(workerSid) {
     client.taskrouter.v1
-            .workspaces(workspaceSid)
-            .workers(workerSid)
-            .fetch()
+            .workspaces(workspaceSid).workers(workerSid).fetch()
             .then(worker => {
                 var theActivity = "";
                 for (i = 0; i < arrayActivities.length; i++) {

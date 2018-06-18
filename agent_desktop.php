@@ -98,11 +98,13 @@ foreach ($activities as $record) {
                         console.log(error.code);
                         console.log(error.message);
                     }
+                    ReservationObject.task.complete();
                 });
                 logger("---------");
             }
             function goOffline() {
                 logger("goOffline(): update worker's activity to: Offline.");
+                ReservationObject.task.complete();
                 worker.update("ActivitySid", "<?= $activity['Offline'] ?>", function (error, worker) {
                     if (error) {
                         console.log(error.code);
@@ -118,15 +120,11 @@ foreach ($activities as $record) {
             function acceptReservation() {
                 logger("acceptReservation(): start a conference call, and connect caller and agent.");
                 var options = {
-                    "From": "<?= $caller_ID ?>", // CC's phone number
                     "PostWorkActivitySid": "<?= $activity['WrapUp'] ?>",
                     "Timeout": "30",
-                    "Record": "true",
-                    "RecordingStatusCallback": window.location.protocol + "//" + window.location.host + "/recording_callback",
-                    "ConferenceStatusCallback": window.location.protocol + "//" + window.location.host + "/conference_callback",
-                    "ConferenceStatusCallbackEvent": "start,end,join,leave"
+                    "Record": "false"
                 };
-                console.log(options);
+                logger("Record the call: " + options.Record + ", Post Activity: WrapUp");
                 ReservationObject.conference(null, null, null, null,
                         function (error, reservation) {
                             if (error) {
@@ -140,32 +138,6 @@ foreach ($activities as $record) {
                 refreshWorkerUI(worker, "In a Call");
             }
             // -----------------------------------------------------------------
-            function muteCaller() {
-                logger("muteCaller: post to /callmute, muted: True.");
-                $.post("/callmute", {
-                    participant: ReservationObject.task.attributes.conference.participants.customer,
-                    conference: ReservationObject.task.attributes.conference.sid,
-                    muted: "True"
-                });
-            }
-            function unmuteCaller(customer) {
-                logger("unmuteCaller: post to /callmute, muted: False.");
-                //post to /callmute end point with the customer callsid and conferenceSID
-                if (customer) {
-                    $.post("/callmute", {
-                        participant: customer,
-                        conference: ReservationObject.task.attributes.conference,
-                        muted: "False"
-                    });
-                } else {
-                    $.post("/callmute", {
-                        participant: ReservationObject.task.attributes.conference.participants.customer,
-                        conference: ReservationObject.task.attributes.conference.sid,
-                        muted: "False"
-                    });
-                }
-            }
-            // -----------------------------------------------------------------
             // Show/hide buttons corresponding to the activity
             function refreshWorkerUI(worker, activityOverride = null) {
                 let activityName = activityOverride || worker.activityName;
@@ -173,8 +145,6 @@ foreach ($activities as $record) {
                 let buttons = {
                     'online': false,
                     'offline': false,
-                    // 'mute': false,
-                    // 'unmute': false,
                     'accept': false,
                     'reject': false,
                     'hangup': false
@@ -191,8 +161,6 @@ foreach ($activities as $record) {
                         buttons['reject'] = true;
                         break;
                     case "In a Call":
-                        // buttons['mute'] = true;
-                        // buttons['unmute'] = true;
                         buttons['hangup'] = true;
                         break;
                     case "WrapUp":
@@ -289,8 +257,6 @@ foreach ($activities as $record) {
                 <a class="btn" id="btn_offline" style="display:none;"><span class="network-name" onclick="goOffline()">Go Offline</span></a>
                 <a class="btn" id="btn_accept" style="display:none;"><span class="network-name" onclick="acceptReservation()">Accept</span></a>
                 <a class="btn" id="btn_reject" style="display:none;"><span class="network-name" onclick="rejectReservation()">Reject</span></a>
-                <a class="btn" id="btn_mute" style="display:none;"><span class="network-name" onclick="muteCaller()">Mute</span></a>
-                <a class="btn" id="btn_unmute" style="display:none;"><span class="network-name" onclick="unmuteCaller()">Unmute</span></a>
                 <a class="btn" id="btn_hangup" style="display:none;"><span class="network-name" onclick="hangup()">Hangup</span></a>
             </section>
             <section class="log"></section>

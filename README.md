@@ -106,8 +106,9 @@ http://706bf85f.ngrok.io/agent_list
 
 ## Updates to make
 
+- Test mute and unmute.
+- Desktop: Hangup caller when clicking Hangup, i.e. end the conference call, not just end the agent's connection to the conference call.
+- Desktop: Put agent status to offline when clicking "Return."
+- Desktop: Set TTL for the token using an environment variable.
 - Agent List: enter a password to pass to the Desktop to authorize token generation.
 -- Access password is an environment variable.
-- Desktop: Hangup caller when clicking Hangup.
-- Desktop: Set TTL for the token.
-- Desktop: Put status to offline when clicking "Return."

@@ -42,41 +42,49 @@ foreach ($activities as $record) {
         <script type="text/javascript">
             Twilio.Device.setup("<?= $client_token ?>", {debug: true});
             Twilio.Device.ready(function (device) {
-                console.log("Client is ready for connections");
+                console.log("Device: Client is ready for connections");
+                logger("Device: Client is ready for connections.");
             });
             Twilio.Device.error(function (error) {
                 $("#logger").text("Error: " + error.message);
+                logger("Device: Error: " + error.message + ".");
             });
             Twilio.Device.connect(function (conn) {
-                $("#logger").text("Successfully established call");
+                $("#logger").text("Device: Successfully established call");
+                logger("Device: Successfully established call.");
             });
             Twilio.Device.disconnect(function (conn) {
-                $("#logger").text("Call ended");
+                $("#logger").text("Device: Call ended");
+                logger("Device: Client is ready for connections.");
             });
             Twilio.Device.incoming(function (conn) {
                 //$("#logger").text("Incoming connection from " + conn.parameters.From);
                 // accept the incoming connection and start two-way audio
                 conn.accept();
+                logger("Device: Incoming connection from " + conn.parameters.From + ".");
             });
             function call() {
-                // get the phone number or client to connect the call to
+                logger("call(), connecct to " + $("#number").val() + ".");
                 params = {"PhoneNumber": $("#number").val()};
                 Twilio.Device.connect(params);
             }
             function hangup() {
-                Twilio.Device.disconnectAll();
+                logger("hangup(), set ReservationObject.task.complete().");
                 ReservationObject.task.complete();
-
+                logger("Set Worker activity to: WrapUp.");
                 worker.update("ActivitySid", "<?= $activity['WrapUp'] ?>", function (error, worker) {
-                    logger(worker.friendlyName + " has ended the call");
-
+                    logger("Worker: " + worker.friendlyName + ", has ended the call.");
+                    logger("Device: disconnect.");
+                    Twilio.Device.disconnectAll();
                     if (error) {
                         console.log(error.code);
                         console.log(error.message);
                     } else {
                         console.log(worker.activityName);
                     }
+                    logger("---------");
                 });
+                logger("---------");
             }
         </script>
         <script type="text/javascript">
@@ -84,16 +92,17 @@ foreach ($activities as $record) {
             let ReservationObject;
             // -----------------------------------------------------------------
             function goAvailable() {
-                // update worker's activity to Idle
+                logger("goAvailable(): update worker's activity to: Idle.");
                 worker.update("ActivitySid", "<?= $activity['Idle'] ?>", function (error, worker) {
                     if (error) {
                         console.log(error.code);
                         console.log(error.message);
                     }
                 });
+                logger("---------");
             }
             function goOffline() {
-                // update worker's activity to Offline
+                logger("goOffline(): update worker's activity to: Offline.");
                 worker.update("ActivitySid", "<?= $activity['Offline'] ?>", function (error, worker) {
                     if (error) {
                         console.log(error.code);
@@ -103,10 +112,11 @@ foreach ($activities as $record) {
             }
             // -----------------------------------------------------------------
             function rejectReservation() {
+                logger("rejectReservation().");
                 ReservationObject.reject();
             }
             function acceptReservation() {
-                // Create a new conference and join customer and worker into it
+                logger("acceptReservation(): start a conference call, and connect caller and agent.");
                 var options = {
                     "From": "<?= $caller_ID ?>", // CC's phone number
                     "PostWorkActivitySid": "<?= $activity['WrapUp'] ?>",
@@ -116,7 +126,6 @@ foreach ($activities as $record) {
                     "ConferenceStatusCallback": window.location.protocol + "//" + window.location.host + "/conference_callback",
                     "ConferenceStatusCallbackEvent": "start,end,join,leave"
                 };
-                console.log("Starting conference...");
                 console.log(options);
                 ReservationObject.conference(null, null, null, null,
                         function (error, reservation) {
@@ -126,12 +135,13 @@ foreach ($activities as $record) {
                             }
                         },
                         options
-                        )
-                logger("Conference initiated!");
+                        );
+                logger("Conference initiated.");
                 refreshWorkerUI(worker, "In a Call");
             }
             // -----------------------------------------------------------------
             function muteCaller() {
+                logger("muteCaller: post to /callmute, muted: True.");
                 $.post("/callmute", {
                     participant: ReservationObject.task.attributes.conference.participants.customer,
                     conference: ReservationObject.task.attributes.conference.sid,
@@ -139,6 +149,7 @@ foreach ($activities as $record) {
                 });
             }
             function unmuteCaller(customer) {
+                logger("unmuteCaller: post to /callmute, muted: False.");
                 //post to /callmute end point with the customer callsid and conferenceSID
                 if (customer) {
                     $.post("/callmute", {
@@ -146,7 +157,6 @@ foreach ($activities as $record) {
                         conference: ReservationObject.task.attributes.conference,
                         muted: "False"
                     });
-
                 } else {
                     $.post("/callmute", {
                         participant: ReservationObject.task.attributes.conference.participants.customer,
@@ -163,8 +173,8 @@ foreach ($activities as $record) {
                 let buttons = {
                     'online': false,
                     'offline': false,
-                    'mute': false,
-                    'unmute': false,
+                    // 'mute': false,
+                    // 'unmute': false,
                     'accept': false,
                     'reject': false,
                     'hangup': false
@@ -181,8 +191,8 @@ foreach ($activities as $record) {
                         buttons['reject'] = true;
                         break;
                     case "In a Call":
-                        buttons['mute'] = true;
-                        buttons['unmute'] = true;
+                        // buttons['mute'] = true;
+                        // buttons['unmute'] = true;
                         buttons['hangup'] = true;
                         break;
                     case "WrapUp":
@@ -204,8 +214,9 @@ foreach ($activities as $record) {
             }
             // -----------------------------------------------------------------
             function registerTaskRouterCallbacks() {
+                logger("registerTaskRouterCallbacks().");
                 worker.on('ready', function (worker) {
-                    logger("Successfully registered as: " + worker.friendlyName);
+                    logger("Successfully registered as: " + worker.friendlyName + ".");
                     // document.querySelector('h2').innerHTML = "Call center agent desktop for: " + worker.friendlyName;
                     document.getElementById('worker_name').innerText = "Agent: " + worker.friendlyName + " >>> ";
                     if (worker.attributes.skills) {
@@ -219,23 +230,23 @@ foreach ($activities as $record) {
                 });
                 worker.on('activity.update', function (worker) {
                     let activityName = worker.activityName;
-                    logger("Worker activity changed to: " + activityName);
-                    refreshWorkerUI(worker)
+                    logger("Worker activity updated to: " + activityName);
+                    refreshWorkerUI(worker);
                 });
                 worker.on('reservation.created', function (reservation) {
-                    logger("-----");
-                    logger("You have been reserved to handle a call!");
-                    logger("Call from: " + reservation.task.attributes.from);
-                    logger("Selected language: " + reservation.task.attributes.selected_language);
-                    logger("Customer request: " + reservation.task.attributes.selected_product);
-                    logger("-----");
-                    logger(reservation.sid);
+                    logger("---------");
+                    logger("reservation.created: You are reserved to handle a call from: " + reservation.task.attributes.from);
+                    if (reservation.task.attributes.selected_language) {
+                        logger("Caller selected language: " + reservation.task.attributes.selected_language);
+                    }
+                    logger("Customer request, task.attributes.selected_product: " + reservation.task.attributes.selected_product);
+                    logger("Reservation SID: " + reservation.sid);
                     refreshWorkerUI(worker, "Incoming Reservation")
                     ReservationObject = reservation;  // set global ReservationObject
                 });
                 worker.on('reservation.accepted', function (reservation) {
                     logger("Reservation " + reservation.sid + " accepted.");
-                    // update reservationObject to contain the updated reservation information/task attributes e.g. conference
+                    logger("---------");
                     ReservationObject = reservation;
                 });
                 worker.on('reservation.rejected', function (reservation) {
@@ -260,19 +271,18 @@ foreach ($activities as $record) {
                 logger("Initializing...");
                 window.worker = new Twilio.TaskRouter.Worker("<?= $workerToken ?>");
                 registerTaskRouterCallbacks();
-
             };
         </script>
     </head>
     <body>
         <script type="text/javascript" src="../pageTop.js"></script>
         <div class="company">
-        <!-- div class="content" -->
+            <!-- div class="content" -->
             <h2>Agent Desktop</h2>
             <table><tr>
                     <td><section id="worker_name"></section></td>
                     <td><section id="worker_status"></section></td>
-            </tr></table>
+                </tr></table>
             <section>
                 <br/>
                 <a class="btn" id="btn_online" style="display:none;"><span class="network-name" onclick="goAvailable()">Go Available</span></a>
@@ -286,9 +296,11 @@ foreach ($activities as $record) {
             <section class="log"></section>
             <br/>
             <section>
-                <textarea id="log" readonly="true" style="width: 600px;height: 200px"></textarea>
+                <textarea id="log" readonly="true" style="width: 700px;height: 200px"></textarea>
             </section>
-            <a href="/agent_list.php">Return to Agent List</a>
+            <div style="padding-top: 10px;">
+                <a href="/agent_list.php">Return to Agent List</a>
+            </div>
         </div>
         <script type="text/javascript" src="../pageBottom.js"></script>
     </body>

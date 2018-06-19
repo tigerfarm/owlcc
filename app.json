@@ -1,6 +1,6 @@
 {
-  "name": "Owl Agent Application",
-  "description": "A Call Center TaskRouter PHP web application.",
+  "name": "Owl Call Center Agent Application",
+  "description": "A PHP web application using Twilio TaskRouter.",
   "repository": "https://github.com/tigerfarm/OwlCc",
   "logo": "http://tigerfarmpress.com/images/topImgLeft.jpg",
   "keywords": ["php", "Twilio", "Contact Center"]

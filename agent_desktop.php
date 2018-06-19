@@ -72,7 +72,7 @@ foreach ($activities as $record) {
                 logger("hangup(), set ReservationObject.task.complete().");
                 ReservationObject.task.complete();
                 logger("Set Worker activity to: WrapUp.");
-                worker.update("ActivitySid", "<?= $activity['complete'] ?>", function (error, worker) {
+                worker.update("ActivitySid", "<?= $activity['WrapUp'] ?>", function (error, worker) {
                     logger("Worker: " + worker.friendlyName + ", has ended the call.");
                     logger("Device: disconnect.");
                     Twilio.Device.disconnectAll();

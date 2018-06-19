@@ -14,17 +14,17 @@ client.taskrouter.v1
         .then((tasks) => {
             console.log("+ Load Tasks.");
             tasks.forEach((task) => {
-                doList(task.sid);
+                doList(task.sid, task.assignment_status);
             });
             ;
         });
-function doList(taskSid) {
+function doList(taskSid,taskAssignement) {
     client.taskrouter.v1
         .workspaces(workspaceSid).tasks(taskSid).reservations.list()
         .then((reservations) => {
             reservations.forEach((reservation) => {
                 // Example: + taskSid:WTxxxxxxxxxxxxxxxxxxxxxx reservation.sid:WRxxxxxxxxxxxxxxxxxxxxxx accepted David
-                console.log("+ taskSid:" + taskSid + " reservation.sid:" + reservation.sid + " " + reservation.reservationStatus + " " + reservation.workerName + " ");
+                console.log("+ taskSid:" + taskSid + " reservation.sid:" + reservation.sid + " " + reservation.reservationStatus + " " + reservation.workerName + " " + taskAssignement);
                 // "participants":{"worker":"CA8d837e4b2d27bc9a245588e02effd702","customer":"CAef469be89cdd826632a0a82b9d4beefd"}
             });
         });

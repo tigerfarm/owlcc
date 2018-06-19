@@ -72,7 +72,7 @@ foreach ($activities as $record) {
                 logger("hangup(), set ReservationObject.task.complete().");
                 ReservationObject.task.complete();
                 logger("Set Worker activity to: WrapUp.");
-                worker.update("ActivitySid", "<?= $activity['WrapUp'] ?>", function (error, worker) {
+                worker.update("ActivitySid", "<?= $activity['complete'] ?>", function (error, worker) {
                     logger("Worker: " + worker.friendlyName + ", has ended the call.");
                     logger("Device: disconnect.");
                     Twilio.Device.disconnectAll();
@@ -98,13 +98,12 @@ foreach ($activities as $record) {
                         console.log(error.code);
                         console.log(error.message);
                     }
-                    ReservationObject.task.complete();
+                    ReservationObject.task.complete(); // If the status was wrapping, now it will be completed.
                 });
                 logger("---------");
             }
             function goOffline() {
                 logger("goOffline(): update worker's activity to: Offline.");
-                ReservationObject.task.complete();
                 worker.update("ActivitySid", "<?= $activity['Offline'] ?>", function (error, worker) {
                     if (error) {
                         console.log(error.code);
@@ -196,11 +195,6 @@ foreach ($activities as $record) {
                     logger("Current activity is: " + worker.activityName);
                     refreshWorkerUI(worker);
                 });
-                worker.on('activity.update', function (worker) {
-                    let activityName = worker.activityName;
-                    logger("Worker activity updated to: " + activityName);
-                    refreshWorkerUI(worker);
-                });
                 worker.on('reservation.created', function (reservation) {
                     logger("---------");
                     logger("reservation.created: You are reserved to handle a call from: " + reservation.task.attributes.from);
@@ -211,6 +205,11 @@ foreach ($activities as $record) {
                     logger("Reservation SID: " + reservation.sid);
                     refreshWorkerUI(worker, "Incoming Reservation")
                     ReservationObject = reservation;  // set global ReservationObject
+                });
+                worker.on('activity.update', function (worker) {
+                    let activityName = worker.activityName;
+                    logger("Worker activity updated to: " + activityName);
+                    refreshWorkerUI(worker);
                 });
                 worker.on('reservation.accepted', function (reservation) {
                     logger("Reservation " + reservation.sid + " accepted.");

@@ -34,11 +34,11 @@ foreach ($activities as $record) {
     <head>
         <title>Agent Desktop</title>
         <link rel="icon" href="/favicon.ico" type="image/x-icon">    
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="custom//favicon.ico" type="image/x-icon">
         <script type="text/javascript" src="//media.twiliocdn.com/sdk/js/client/v1.4/twilio.min.js"></script>
         <script type="text/javascript" src="//media.twiliocdn.com/taskrouter/js/v1.10/taskrouter.min.js"></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <link href="agentapp.css" rel="stylesheet"/>
+        <link href="custom/agentapp.css" rel="stylesheet"/>
         <script type="text/javascript">
             Twilio.Device.setup("<?= $client_token ?>", {debug: true});
             Twilio.Device.ready(function (device) {
@@ -124,6 +124,7 @@ foreach ($activities as $record) {
                     "Record": "false"
                 };
                 logger("Record the call: " + options.Record + ", Post Activity: WrapUp");
+                // https://www.twilio.com/docs/taskrouter/api/reservations
                 ReservationObject.conference(null, null, null, null,
                         function (error, reservation) {
                             if (error) {
@@ -242,7 +243,7 @@ foreach ($activities as $record) {
         </script>
     </head>
     <body>
-        <script type="text/javascript" src="../pageTop.js"></script>
+        <script type="text/javascript" src="custom/pageTop.js"></script>
         <div class="company">
             <!-- div class="content" -->
             <h2>Agent Desktop</h2>
@@ -267,6 +268,6 @@ foreach ($activities as $record) {
                 <a href="/agent_list.php">Return to Agent List</a>
             </div>
         </div>
-        <script type="text/javascript" src="../pageBottom.js"></script>
+        <script type="text/javascript" src="custom/pageBottom.js"></script>
     </body>
 </html>

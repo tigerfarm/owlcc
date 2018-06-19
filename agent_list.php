@@ -19,7 +19,6 @@ $activities = $client->taskrouter->v1->workspaces($workspace_sid)
         ->read();
 $activity = [];
 foreach ($activities as $record) {
-
     $activity[$record->friendlyName] = $record->sid;
 }
 ?>
@@ -28,30 +27,35 @@ foreach ($activities as $record) {
     <head>
         <meta charset="UTF-8">
         <title>Agent List</title>
-        <link rel="icon" href="/favicon.ico" type="image/x-icon">    
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-        <link href="agentapp.css" rel="stylesheet"/>
+        <link rel="icon" href="custom//favicon.ico" type="image/x-icon">    
+        <link rel="shortcut icon" href="custom//favicon.ico" type="image/x-icon">
+        <link href="custom/agentapp.css" rel="stylesheet"/>
     </head>
     <body>
-        <script type="text/javascript" src="../pageTop.js"></script>
+        <script type="text/javascript" src="custom/pageTop.js"></script>
         <div class="company">
             <h2>Agent List</h2>
             <p>Click your TaskRouter Worker ID.</p>
             <div id="agentList">
                 <table>
                     <?php
+                    echo "\xA";
                     foreach ($voice_workers as $voice_worker) {
                         echo "<tr><td>"
                         . "<a href=\"agent_desktop.php?WorkerSid=" . $voice_worker->sid . "\" style=\"color: #080A30;padding-right: 10px;\"" . ">"
                         . $voice_worker->friendlyName . "</a>"
                         . "</td><td>"
                         . $voice_worker->activityName
-                        . "</td></tr>";
+                        . "</td></tr>"
+                        . "\xA";
                     }
-                    ?>
+                    ?>                    
                 </table>
             </div>
+            <div style="padding-top: 10px;">
+                <a href="/agent_tasks.php">Task List</a>
+            </div>
         </div>
-        <script type="text/javascript" src="../pageBottom.js"></script>
+        <script type="text/javascript" src="custom/pageBottom.js"></script>
     </body>
 </html>

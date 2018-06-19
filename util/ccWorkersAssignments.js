@@ -1,5 +1,6 @@
 // Documentation:
-// https://www.twilio.com/docs/taskrouter/api/tasks (assignement status)
+// https://www.twilio.com/docs/taskrouter/api/tasks (assignement status: retrieve and update)
+// https://www.twilio.com/docs/taskrouter/api/reservations
 // https://www.twilio.com/docs/taskrouter/lifecycle-task-state
 // 
 console.log("+++ Start: ccWorkerList.js");

@@ -1,6 +1,6 @@
 # Owl Contact Center Version 2
 
-<img src="CallCenterFlow.jpg"/>
+<img src="custom/CallCenterFlow.jpg"/>
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/tigerfarm/owlcc)
 

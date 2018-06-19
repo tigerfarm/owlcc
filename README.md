@@ -16,17 +16,23 @@ WORKSPACE_SID=your_TaskRouter_workspace_SID
 
 ## Files
 
+README.md : this file
+
 Agent desktop website:
 - [index.html](index.html) : Home page
 - [agent_list.php](agent_list.php) : List TaskRouter worker agents and their status.
-- [agent_desktop.css](agent_desktop.css) : Agent desktop to manage their status and receive calls.
+- [task_list.php](task_list.php) : List active worker tasks and their status. This page also resets a task to completed
+if it gets stuck in status: wrapping. If a task gets stuck in wrapping, the agent can not be assigned a new task. 
+- [agent_desktop.php](agent_desktop.php) : Agent desktop to manage their status and receive calls.
 
-For website branding:
-- [companyLogo.jpg](companyLogo.jpg)
+The [custom](custom) directory is for website branding files:
+- [favicon.ico](favicon.ico) : Page icon
 - [pageTop.js](pageTop.js) : Top of the page for logo and application title
+- [companyLogo.jpg](companyLogo.jpg) : Top of the page logo
 - [pageBottom.js](pageBottom.js) : Bottom of the page
+- [Logo.jpg](Logo.jpg) : Bottom of the page logo
 - [agentapp.css](agentapp.css) : HTML page styles
-- [favicon.ico](favicon.ico)
+- [CallCenterFlow.jpg](CallCenterFlow.jpg) : Optional home page graphic
 
 [Twilio PHP Helper Library](https://www.twilio.com/docs/libraries/php) directory:
 - twilio-php-master : Downloaded and unzipped into this directory. This is the version without Composer.
@@ -35,11 +41,13 @@ For a localhost setup, creating environment variables and testing the setup:
 - [setvars.sh](setvars.sh) : Set the environment variables.
 - [echoVars.php](echoVars.php) : Echo the environment variables. Test the Twilio Helper Library installation and the TaskRouter configurations.
 
-README.md : this file
-
 Heroku Hosting Service configurations
 - [app.json](app.json) : Heroku deployment file to describe the application when it is being deployed.
 - [composer.json](composer.json) : Heroku deployment file which sets the programming language used.
+
+The [util](util) directory has sample Node.js programs, examples:
+- [ccActivities.js](ccActivities.js) : List worker activities
+- [ccTaskList.js](ccTaskList.js) : List tasks
 
 ## Setup Steps to Run on your Local Host.
 

@@ -64,11 +64,17 @@ foreach ($tasks as $task) {
                     ?>                    
                 </table>
             </div>
-            <p>Note, this page will reset task assignment status from <span style="font-style: italic;">wrapping</span> to <span style="font-style: italic;">completed</span>,
-                if a task gets stuck in <span style="font-style: italic;">wrapping</span>.</p>
             <div style="padding-top: 10px;">
                 <a href="/index.html">Home</a>
             </div>
+        </div>
+        <div style="padding-left: 120px;width: 780px;">
+            <hr>
+            <p>Note,
+                <br/>If a task assignment status is stuck in status: <span style="font-style: italic;">wrapping</span>, this page will change the status
+                from <span style="font-style: italic;">wrapping</span> to <span style="font-style: italic;">completed</span>.
+                <br/>If a task gets stuck in <span style="font-style: italic;">wrapping</span>, the agent can not be assigned a new task.
+            </p>
         </div>
         <script type="text/javascript" src="custom/pageBottom.js"></script>
     </body>

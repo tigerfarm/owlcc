@@ -53,7 +53,7 @@ foreach ($activities as $record) {
                 </table>
             </div>
             <div style="padding-top: 10px;">
-                <a href="/agent_tasks.php">Task List</a>
+                <a href="/index.html">Home</a>
             </div>
         </div>
         <script type="text/javascript" src="custom/pageBottom.js"></script>

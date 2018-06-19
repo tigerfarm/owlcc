@@ -36,8 +36,7 @@ foreach ($tasks as $task) {
     <body>
         <script type="text/javascript" src="custom/pageTop.js"></script>
         <div class="company">
-            <h2>Agent List</h2>
-            <p>Click your TaskRouter Worker ID.</p>
+            <h2>Task List</h2>
             <div id="agentList">
                 <table>
                     <?php
@@ -64,6 +63,11 @@ foreach ($tasks as $task) {
                     }
                     ?>                    
                 </table>
+            </div>
+            <p>Note, this page will reset task assignment status from <span style="font-style: italic;">wrapping</span> to <span style="font-style: italic;">completed</span>,
+                if a task gets stuck in <span style="font-style: italic;">wrapping</span>.</p>
+            <div style="padding-top: 10px;">
+                <a href="/index.html">Home</a>
             </div>
         </div>
         <script type="text/javascript" src="custom/pageBottom.js"></script>

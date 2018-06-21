@@ -41,7 +41,9 @@ foreach ($tasks as $task) {
                 <table>
                     <?php
                     echo "\xA";
+                    $i = 0;
                     foreach ($tasks as $task) {
+                        $i = $i + 1;
                         $reservations = $client->taskrouter->workspaces($workspaceSid)
                                 ->tasks($task->sid)
                                 ->reservations
@@ -60,6 +62,12 @@ foreach ($tasks as $task) {
                             . "</td></tr>"
                             . "\xA";
                         }
+                    }
+                    if ($i == 0) {
+                        echo "<tr><td>"
+                        . "No tasks at this current time."
+                        . "</td></tr>"
+                        . "\xA";
                     }
                     ?>                    
                 </table>

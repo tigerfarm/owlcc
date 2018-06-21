@@ -114,10 +114,8 @@ http://706bf85f.ngrok.io/agent_list
 
 ## Updates to make
 
-- Desktop: Put agent status to offline when clicking "Return."
 - Desktop: Set TTL for the token using an environment variable.
 - Agent List: enter a password to pass to the Desktop to authorize token generation.
 -- Access password is an environment variable.
-
+- Desktop: When putting an agent status to offline when clicking "Return", should do checks. 
 - When Agent clicks Go Available, need to insure that there are no Tasks with the agent's name that are Assignment Status: wrapping.
-

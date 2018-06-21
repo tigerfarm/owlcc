@@ -27,6 +27,7 @@ $activities = $client->taskrouter->v1->workspaces($workspace_sid)->activities->r
 $activity = [];
 foreach ($activities as $record) {
     $activity[$record->friendlyName] = $record->sid;
+    $activityName[$record->sid] = $record->friendlyName;
 }
 ?>
 <!DOCTYPE html>
@@ -71,6 +72,15 @@ foreach ($activities as $record) {
             function hangup() {
                 logger("hangup(), set ReservationObject.task.complete().");
                 ReservationObject.task.complete();
+                // To totally shutdown the call:
+                // $.post("/hangup", {
+                //    participant: ReservationObject.task.attributes.conference.participants.customer,
+                //    conference: ReservationObject.task.attributes.conference.sid
+                //});
+                // /hangup :
+                //    participant = client.conferences(request.values.get('conference')).update(status="completed")
+                //    resp = VoiceResponse
+                //    return Response(str(resp), mimetype='text/xml')
                 logger("Set Worker activity to: WrapUp.");
                 worker.update("ActivitySid", "<?= $activity['WrapUp'] ?>", function (error, worker) {
                     logger("Worker: " + worker.friendlyName + ", has ended the call.");
@@ -233,6 +243,19 @@ foreach ($activities as $record) {
                 log.value += "\n> " + message;
                 log.scrollTop = log.scrollHeight;
             }
+            function sleep(milliseconds) {
+                var start = new Date().getTime();
+                for (var i = 0; i < 1e7; i++) {
+                    if ((new Date().getTime() - start) > milliseconds) {
+                        break;
+                    }
+                }
+            }
+            function goAgentList() {
+                goOffline();
+                sleep(500);
+                window.location.replace("/agent_list.php");
+            }
             window.onload = function () {
                 // Initialize TaskRouter.js on page load using window.workerToken -
                 // a Twilio Capability token that was set from rendering the template with agents endpoint
@@ -254,7 +277,7 @@ foreach ($activities as $record) {
             <section>
                 <br/>
                 <a class="btn" id="btn_online" style="display:none;"><span class="network-name" onclick="goAvailable()">Go Available</span></a>
-                <a class="btn" id="btn_offline" style="display:none;"><span class="network-name" onclick="goOffline()">Go Offline</span></a>
+                <a class="btn" id="btn_offline"><span class="network-name" onclick="goOffline()">Go Offline</span></a>
                 <a class="btn" id="btn_accept" style="display:none;"><span class="network-name" onclick="acceptReservation()">Accept</span></a>
                 <a class="btn" id="btn_reject" style="display:none;"><span class="network-name" onclick="rejectReservation()">Reject</span></a>
                 <a class="btn" id="btn_hangup" style="display:none;"><span class="network-name" onclick="hangup()">Hangup</span></a>
@@ -262,10 +285,10 @@ foreach ($activities as $record) {
             <section class="log"></section>
             <br/>
             <section>
-                <textarea id="log" readonly="true" style="width: 700px;height: 200px"></textarea>
+                <textarea id="log" readonly="true" style="width: 700px;height: 200px">Agent:</textarea>
             </section>
             <div style="padding-top: 10px;">
-                <a href="/agent_list.php">Return to Agent List</a>
+                <span id="goAgentList" onclick="goAgentList()">Return to Agent List</span>
             </div>
         </div>
         <script type="text/javascript" src="custom/pageBottom.js"></script>

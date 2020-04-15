@@ -33,7 +33,7 @@ foreach ($activities as $record) {
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Agent Desktop</title>
+        <title>Prayer Agent Desktop</title>
         <link rel="icon" href="/favicon.ico" type="image/x-icon">    
         <link rel="shortcut icon" href="custom//favicon.ico" type="image/x-icon">
         <script type="text/javascript" src="//media.twiliocdn.com/sdk/js/client/v1.4/twilio.min.js"></script>

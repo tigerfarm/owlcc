@@ -26,7 +26,7 @@ foreach ($activities as $record) {
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Agent List</title>
+        <title>Prayer Agent List</title>
         <link rel="icon" href="custom//favicon.ico" type="image/x-icon">    
         <link rel="shortcut icon" href="custom//favicon.ico" type="image/x-icon">
         <link href="custom/agentapp.css" rel="stylesheet"/>
@@ -35,7 +35,7 @@ foreach ($activities as $record) {
         <script type="text/javascript" src="custom/pageTop.js"></script>
         <div class="company">
             <h2>Agent List</h2>
-            <p>Click your TaskRouter Worker ID.</p>
+            <p>Click your TaskRouter Worker Prayer ID.</p>
             <div id="agentList">
                 <table>
                     <?php

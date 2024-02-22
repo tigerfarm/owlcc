@@ -1,5 +1,9 @@
 # Owl Contact Center Version 2
 
+[NodeJS version](https://github.com/tigerfarm/tfptaskrouter) updated GitHub repository.
+
+[PHP version](https://github.com/tigerfarm/tigtaskrouterworker) updated GitHub repository.
+
 <img src="custom/CallCenterFlow.jpg"/>
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/tigerfarm/owlcc)
